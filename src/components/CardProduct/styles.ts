@@ -24,8 +24,7 @@ export const Value = styled.Text`
     color: ${theme.COLORS.GRAY_400}
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.LG}px;
-    font-weight: bold;
-  `} 
+  `}
 `
 
 export const ContainerInfoProduct = styled.View`

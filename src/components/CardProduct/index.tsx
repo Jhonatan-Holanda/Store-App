@@ -1,6 +1,5 @@
 import { HighLight } from '../HighLight';
-import { Container, ContainerInfoProduct, Description, Icon, Image, Title, Value, ViewImageCenter } from './styles';
-import { AntDesign } from '@expo/vector-icons'
+import { Container, ContainerInfoProduct, Icon, Image, Value, ViewImageCenter } from './styles';
 
 type CardProductProps = {
   image: string;
@@ -23,6 +22,7 @@ export function CardProduct({image, title, description, value}: CardProductProps
           title={title}
           description={description}
           short={true}
+          detail={false}
         />
 
         <Value>
