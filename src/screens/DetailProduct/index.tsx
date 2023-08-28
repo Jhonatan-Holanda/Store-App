@@ -1,9 +1,11 @@
-import { Container, Image, QuantityProduct, ContainerQuantity, ViewImageCenter, Value, CountQuantity, ContainerValue } from "./styles";
+import { useTheme } from "styled-components/native";
+
 import { HighLight } from "../../components/HighLight"
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
-import { Icon } from "../../components/IconComponent";
-import { useTheme } from "styled-components/native";
+import { QuantityCount } from "../../components/QuantityCount";
+
+import { Container, Image, ViewImageCenter, Value, ContainerValue } from "./styles";
 
 export type CardProductProps = {
   image: string;
@@ -30,7 +32,7 @@ export function DetailProduct(){
       />
 
       <ViewImageCenter>
-        <Image source={{uri: mockProduct.image}}/>
+        <Image source={{uri: mockProduct.image}} />
       </ViewImageCenter>
 
       <HighLight
@@ -44,21 +46,10 @@ export function DetailProduct(){
         <Value>
           {'R$ ' + mockProduct.value}
         </Value>
-
-        <ContainerQuantity>
-          <CountQuantity>
-            <Icon iconName="minuscircleo" size={46} color={theme.COLORS.GRAY_400}/>
-          </CountQuantity>
-            
-          <QuantityProduct>
-            0
-          </QuantityProduct>
-
-          <CountQuantity>
-            <Icon iconName="pluscircleo" size={46} color={theme.COLORS.GRAY_400}/>
-          </CountQuantity>
-        </ContainerQuantity>
+        
+        <QuantityCount />
       </ContainerValue>
+        
 
       <Button
         title='Adicione ao carrinho'
