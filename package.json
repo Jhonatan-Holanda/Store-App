@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo-google-fonts/encode-sans": "^0.2.3",
     "@expo-google-fonts/roboto": "^0.2.3",
+    "@expo-google-fonts/roboto-mono": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
     "@types/styled-components": "^5.1.26",
     "@types/styled-components-react-native": "^5.2.1",
