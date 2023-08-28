@@ -3,17 +3,18 @@ import { Container, Description, Title } from './styles'
 type HighLightProps = {
   title: string,
   description: string,
-  short: boolean
+  short: boolean,
+  detail: boolean
 }
 
-export function HighLight({title , description, short}: HighLightProps) {
+export function HighLight({title , description, short, detail = false}: HighLightProps) {
   return (
     <Container>
-      <Title>
-        {title}
+      <Title detail={detail}>
+        {short ? title.substring(0,22) + '...' : title}
       </Title>
-      <Description>
-        {short ? description.substring(0, 76) + `...` : description}
+      <Description detail={detail}>
+        {short ? description.substring(0, 65) + `...` : description}
       </Description>
     </Container>
   )
