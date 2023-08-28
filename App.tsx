@@ -6,6 +6,8 @@ import { useFonts, EncodeSans_400Regular, EncodeSans_700Bold } from '@expo-googl
 import defaultTheme from './src/theme/default';
 import { Products } from './src/screens/Products';
 import { DetailProduct } from './src/screens/DetailProduct';
+import { Cart } from './src/screens/Cart';
+import React from 'react';
 
 export default function App() {
   const [fontsLoaded] = useFonts({RobotoMono_600SemiBold, RobotoMono_700Bold, EncodeSans_400Regular, EncodeSans_700Bold})
@@ -18,7 +20,7 @@ export default function App() {
         translucent
       />
 
-      {fontsLoaded ? <DetailProduct /> : <ActivityIndicator /> }
+      {fontsLoaded ? <Cart /> : <ActivityIndicator /> }
     </ThemeProvider>
   );
 }

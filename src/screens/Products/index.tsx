@@ -97,6 +97,7 @@ export function Products() {
             image={item.image}
             description={item.description}
             value={item.price}
+            fill={false}
           />
         )}
       />
