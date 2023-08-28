@@ -1,12 +1,12 @@
 import { StatusBar, ActivityIndicator } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
-import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { useFonts, EncodeSans_400Regular, EncodeSans_700Bold } from '@expo-google-fonts/encode-sans';
 
 import defaultTheme from './src/theme/default';
-import { Products } from './src/screens/Products';
+import { DetailProduct } from './src/screens/DetailProduct';
 
 export default function App() {
-  const [fontsLoaded] = useFonts({Roboto_400Regular, Roboto_700Bold})
+  const [fontsLoaded] = useFonts({EncodeSans_400Regular, EncodeSans_700Bold})
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -16,7 +16,7 @@ export default function App() {
         translucent
       />
 
-      {fontsLoaded ? <Products /> : <ActivityIndicator /> }
+      {fontsLoaded ? <DetailProduct /> : <ActivityIndicator /> }
     </ThemeProvider>
   );
 }
