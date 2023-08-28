@@ -2,13 +2,17 @@ import { Icon } from '../IconComponent'
 import { useTheme } from 'styled-components/native'
 import { ContainerQuantity, QuantityProduct, CountQuantity } from './styles'
 
-export function QuantityCount() {
+type Props = {
+  sizeIcon: number
+}
+
+export function QuantityCount({sizeIcon}: Props) {
   const theme = useTheme();
 
   return(
     <ContainerQuantity>
       <CountQuantity>
-        <Icon iconName="minuscircleo" size={46} color={theme.COLORS.GRAY_400}/>
+        <Icon iconName="minuscircleo" size={sizeIcon} color={theme.COLORS.GRAY_400}/>
       </CountQuantity>
         
       <QuantityProduct>
@@ -16,7 +20,7 @@ export function QuantityCount() {
       </QuantityProduct>
 
       <CountQuantity>
-        <Icon iconName="pluscircleo" size={46} color={theme.COLORS.GRAY_400}/>
+        <Icon iconName="pluscircleo" size={sizeIcon} color={theme.COLORS.GRAY_400}/>
       </CountQuantity>
     </ContainerQuantity>
   )
