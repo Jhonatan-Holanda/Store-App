@@ -1,16 +1,14 @@
 import { HighLight } from '../HighLight';
 import { Container, ContainerInfoProduct, ContainerValue, Icon, Image, Value, ViewImageCenter } from './styles';
 import { QuantityCount } from '../QuantityCount';
+import { ProductProps } from '../../@types/productsDTO';
+import { TouchableOpacityProps } from 'react-native';
 
-type CardProductProps = {
-  image: string;
-  title: string;
-  description: string;
-  value: string;
+type Props = ProductProps & TouchableOpacityProps & {
   fill?: boolean;
 }
 
-export function CardProduct({image, title, description, value, fill, ...rest}: CardProductProps){
+export function CardProduct({description, image, price, title, fill, ...rest}: Props){
   return (
     <Container
       fill={fill}
@@ -21,7 +19,7 @@ export function CardProduct({image, title, description, value, fill, ...rest}: C
       <ViewImageCenter 
         fill={fill}
       >
-        <Image source={{uri: image}}/>
+        <Image source={{uri: image}} resizeMode='contain'/>
       </ViewImageCenter>
       
       <ContainerInfoProduct
@@ -37,7 +35,7 @@ export function CardProduct({image, title, description, value, fill, ...rest}: C
 
       <ContainerValue>
         <Value>
-          {`R$ ` + value}
+          {`R$ ` + price}
         </Value>
 
         {fill && 
