@@ -20,10 +20,14 @@ export const Title = styled.Text<HighLightStyleProps>`
 export const Description = styled.Text<HighLightStyleProps>`
   text-align: left;
   margin-bottom: 10px;
-
+  
   ${({theme, detail}) => css`
     font-size: ${detail ? theme.FONT_SIZE.MD : theme.FONT_SIZE.SM}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
     color:${theme.COLORS.GRAY_300};
+  `}
+
+  ${({detail}) => detail === false && css`
+    height: 45px;
   `}
 `;

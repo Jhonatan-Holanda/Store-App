@@ -46,7 +46,7 @@ export const Value = styled.Text<Props>`
 
 export const ContainerInfoProduct = styled(View)<Props>`
   padding: 5px 10px;
-    width: ${({fill}) => fill === false ? `100%` : 140}px;
+  width: ${({fill}) => fill === false ? 165 : 140}px;
 `
 
 export const ContainerValue = styled.View`

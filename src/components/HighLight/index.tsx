@@ -14,7 +14,7 @@ export function HighLight({title , description, short, detail = false}: HighLigh
         {short ? title.substring(0,22) + '...' : title}
       </Title>
       <Description detail={detail}>
-        {short ? description.substring(0, 65) + `...` : description}
+        {short ? description.substring(0, 50).toLowerCase() + `...` : description}
       </Description>
     </Container>
   )
