@@ -18,7 +18,7 @@ export async function getAllProducts() {
   }
 }
 
-export async function getProductByID(id:number) {
+export async function getProductByID(id:string) {
   try{
     const response = await api.get(`/products/${id}`);
     return response.data;
