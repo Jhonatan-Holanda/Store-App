@@ -1,3 +1,4 @@
+import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
@@ -23,4 +24,7 @@ export const Title = styled.Text`
     font-size: ${theme.FONT_SIZE.XL}px;
     font-weight: bold;
   `}
+`
+
+export const ContainerButton = styled(TouchableOpacity)`
 `
