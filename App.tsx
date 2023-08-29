@@ -20,7 +20,7 @@ export default function App() {
         translucent
       />
 
-      {fontsLoaded ? <Cart /> : <ActivityIndicator /> }
+      {fontsLoaded ? <Products /> : <ActivityIndicator /> }
     </ThemeProvider>
   );
 }
