@@ -20,7 +20,7 @@ export function QuantityCount({sizeIcon, value, setQuantity}: Props) {
   }
 
   return(
-    <ContainerQuantity>
+    <ContainerQuantity testID='quantity'>
       <CountQuantity onPress={handleDecreaseQuantity}>
         <IconComponent iconName="minuscircleo" size={sizeIcon} color={theme.COLORS.GRAY_400}/>
       </CountQuantity>
