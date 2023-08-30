@@ -50,7 +50,7 @@ export function CardProduct({description, image, price, title, fill, quantity, i
 
       <ContainerValue>
         {fill && 
-          <ContainerRemoveProduct onPress={() => onRemoveProductInCart(id)}>
+          <ContainerRemoveProduct testID='closeRemove' onPress={() => onRemoveProductInCart(id)}>
             <IconComponent iconName='close' size={24} color={theme.COLORS.RED_DARK}/>
           </ContainerRemoveProduct>
         }
@@ -59,7 +59,7 @@ export function CardProduct({description, image, price, title, fill, quantity, i
         </Value>
 
         {fill && 
-          <ContainerText>
+          <ContainerText testID='quantityInfo'>
             <Title>Quantidade: </Title>
             <SubTitle>{quantity}</SubTitle>
           </ContainerText>
