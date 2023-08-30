@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Icon } from "../IconComponent";
+import { IconComponent } from "../IconComponent";
 import { Container, ContainerButton, Title } from "./styles";
 import { useTheme } from "styled-components/native";
 
@@ -25,7 +25,7 @@ export function Header({ showBackButton = false, showCartIcon = false, title}: P
     <Container>
       { showBackButton &&
         <ContainerButton onPress={handleGoBackHome}>
-          <Icon iconName="left" size={32} color={theme.COLORS.GRAY_400}/>
+          <IconComponent iconName="left" size={32} color={theme.COLORS.GRAY_400}/>
         </ContainerButton>
       }
       <Title>
@@ -33,7 +33,7 @@ export function Header({ showBackButton = false, showCartIcon = false, title}: P
       </Title>
       { showCartIcon &&
         <ContainerButton onPress={handleGoCart}>
-          <Icon iconName="shoppingcart" size={32} color={theme.COLORS.GRAY_400}/>
+          <IconComponent iconName="shoppingcart" size={32} color={theme.COLORS.GRAY_400}/>
         </ContainerButton>
       }
     </Container>

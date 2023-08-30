@@ -1,7 +1,6 @@
-import { Icon } from '../IconComponent'
+import { IconComponent } from '../IconComponent'
 import { useTheme } from 'styled-components/native'
-import { ContainerQuantity, QuantityProduct, CountQuantity } from './styles'
-import { AppError } from '../../utils/AppError';
+import { ContainerQuantity, QuantityProduct, CountQuantity } from './styles';
 
 type Props = {
   sizeIcon: number;
@@ -13,7 +12,7 @@ export function QuantityCount({sizeIcon, value, setQuantity}: Props) {
   const theme = useTheme();
 
   function handleDecreaseQuantity(){
-    if(value === 0) {
+    if(value === 1) {
       return
     }else {
       setQuantity( value - 1)
@@ -23,7 +22,7 @@ export function QuantityCount({sizeIcon, value, setQuantity}: Props) {
   return(
     <ContainerQuantity>
       <CountQuantity onPress={handleDecreaseQuantity}>
-        <Icon iconName="minuscircleo" size={sizeIcon} color={theme.COLORS.GRAY_400}/>
+        <IconComponent iconName="minuscircleo" size={sizeIcon} color={theme.COLORS.GRAY_400}/>
       </CountQuantity>
         
       <QuantityProduct>
@@ -31,7 +30,7 @@ export function QuantityCount({sizeIcon, value, setQuantity}: Props) {
       </QuantityProduct>
 
       <CountQuantity onPress={() => setQuantity( value + 1)}>
-        <Icon iconName="pluscircleo" size={sizeIcon} color={theme.COLORS.GRAY_400}/>
+        <IconComponent iconName="pluscircleo" size={sizeIcon} color={theme.COLORS.GRAY_400}/>
       </CountQuantity>
     </ContainerQuantity>
   )
