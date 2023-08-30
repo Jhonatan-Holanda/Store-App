@@ -17,7 +17,7 @@ export const Container = styled(TouchableOpacity)`
   margin-left: 12px;
 `
 
-export const IconComponent = styled(AntDesign).attrs<IconStyleProps>(({size, color}) => ({
+export const Icon = styled(AntDesign).attrs<IconStyleProps>(({size, color}) => ({
   size: size,
   color: color
 }))``;

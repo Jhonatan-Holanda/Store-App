@@ -1,5 +1,5 @@
 import { AntDesign } from "@expo/vector-icons";
-import { IconComponent } from './styles';
+import { Icon } from './styles';
 
 type Props = {
   iconName: keyof typeof AntDesign.glyphMap;
@@ -7,9 +7,9 @@ type Props = {
   color: string;
 }
 
-export function Icon({iconName, size, color}: Props) {
+export function IconComponent({iconName, size, color}: Props) {
   return (
-    <IconComponent
+    <Icon
       size={size}
       color={color}
       name={iconName}
