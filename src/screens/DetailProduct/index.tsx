@@ -82,7 +82,7 @@ export function DetailProduct(){
   }, [])
   
   return (
-    <Container>
+    <Container testID="screenDetail">
       <Header
         showBackButton={true}
         showCartIcon={true}
