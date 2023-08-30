@@ -54,11 +54,31 @@ export const ContainerValue = styled.View`
     align-items: space-between;
 `
 
-export const Icon = styled(AntDesign).attrs(({}) => ({
-  size: 26
-}))`
-  z-index: 999;
-  position: absolute;
+export const ContainerRemoveProduct = styled(TouchableOpacity)<Props>`
+  margin-bottom: 30px;
   right: 0;
-  padding: 10px;
 `
+
+export const ContainerText = styled.View`
+    flex-direction: row;
+    align-items: center;
+`
+
+export const Title = styled.Text`
+  margin: 5px 0px;
+  ${({theme}) => css`
+    font-size: ${theme.FONT_SIZE.SM}px;
+    font-family: ${theme.FONT_FAMILY.SEMIBOLD_MONO};
+    color: ${theme.COLORS.GRAY_400};
+  `}
+`;
+
+export const SubTitle = styled.Text`
+  text-align: left;
+  
+  ${({theme}) => css`
+    font-size: ${theme.FONT_SIZE.SM}px;
+    font-family: ${theme.FONT_FAMILY.REGULAR};
+    color:${theme.COLORS.GRAY_300};
+  `}
+`;
