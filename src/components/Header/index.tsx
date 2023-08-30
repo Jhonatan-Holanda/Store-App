@@ -24,7 +24,7 @@ export function Header({ showBackButton = false, showCartIcon = false, title}: P
   return (
     <Container>
       { showBackButton &&
-        <ContainerButton onPress={handleGoBackHome}>
+        <ContainerButton testID="backIcon" onPress={handleGoBackHome}>
           <IconComponent iconName="left" size={32} color={theme.COLORS.GRAY_400}/>
         </ContainerButton>
       }
@@ -32,7 +32,7 @@ export function Header({ showBackButton = false, showCartIcon = false, title}: P
         {title}
       </Title>
       { showCartIcon &&
-        <ContainerButton onPress={handleGoCart}>
+        <ContainerButton testID="cartIcon" onPress={handleGoCart}>
           <IconComponent iconName="shoppingcart" size={32} color={theme.COLORS.GRAY_400}/>
         </ContainerButton>
       }
