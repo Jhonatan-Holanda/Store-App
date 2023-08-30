@@ -24,7 +24,7 @@ type Props = ProductProps & TouchableOpacityProps & {
   onRemoveProductInCart?: (id:string) => void;
 }
 
-export function CardProduct({description, image, price, title, fill, quantity, id, onRemoveProductInCart, ...rest}: Props){
+export function CardProduct({description, image, price, title, fill, quantity, id, onRemoveProductInCart  = () => {}, ...rest}: Props){
   const theme = useTheme();
   return (
     <Container
