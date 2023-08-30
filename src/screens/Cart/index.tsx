@@ -63,7 +63,7 @@ export function Cart(){
 
 
   return(
-    <Container>
+    <Container testID="screenCart">
       <Header
         title='Carrinho'
         showBackButton={true}
