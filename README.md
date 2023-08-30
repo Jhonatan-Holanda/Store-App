@@ -11,8 +11,8 @@ O projeto tem como objetivo construir uma aplicação utilizando typescript, uti
 
 ### Tecnologias
 <p>
-<img alt="React Native" src="https://img.shields.io/badge/react native%20-%2361DAFB.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
-<img alt="Expo" src="https://img.shields.io/badge/expo%20-%23000020.svg?&style=for-the-badge&logo=expo&logoColor=%2361DAFB"/>
+<img alt="React Native" src="https://img.shields.io/badge/react%20-%2361DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/>
+<img alt="Expo" src="https://img.shields.io/badge/expo%20-%23000020.svg?&style=for-the-badge&logo=expo&logoColor=white"/>
 <img alt="TypeScript" src="https://img.shields.io/badge/typescript%20-%233178C6.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
 <img alt="Styled Components" src="https://img.shields.io/badge/styledcomponents%20-%23DB7093.svg?&style=for-the-badge&logo=styledcomponents&logoColor=white"/>
 <img alt="Jest" src="https://img.shields.io/badge/jest%20-%23C21325.svg?&style=for-the-badge&logo=jest&logoColor=white"/>
