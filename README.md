@@ -1,6 +1,6 @@
 # Store (fakestoreapi)
 <h1 align="center">
-   <img src="src/assets/cover-readme.png">
+   <img src="assets/cover-readme.png">
 </h1>
 
 ### Sobre o projeto
@@ -11,13 +11,13 @@ O projeto tem como objetivo construir uma aplicação utilizando typescript, uti
 
 ### Tecnologias
 <p>
-<img alt="React Native" src="https://img.shields.io/badge/react native%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
-<img alt="Expo" src="https://img.shields.io/badge/expo%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
-<img alt="TypeScript" src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
-<img alt="Styled Components" src="https://img.shields.io/badge/styledcomponents%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
-<img alt="Jest" src="https://img.shields.io/badge/jest%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
-<img alt="Axios" src="https://img.shields.io/badge/axios%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
-<img alt="AntDesign" src="https://img.shields.io/badge/antdesign%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
+<img alt="React Native" src="https://img.shields.io/badge/react native%20-%2361DAFB.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+<img alt="Expo" src="https://img.shields.io/badge/expo%20-%23000020.svg?&style=for-the-badge&logo=expo&logoColor=%2361DAFB"/>
+<img alt="TypeScript" src="https://img.shields.io/badge/typescript%20-%233178C6.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
+<img alt="Styled Components" src="https://img.shields.io/badge/styledcomponents%20-%23DB7093.svg?&style=for-the-badge&logo=styledcomponents&logoColor=white"/>
+<img alt="Jest" src="https://img.shields.io/badge/jest%20-%23C21325.svg?&style=for-the-badge&logo=jest&logoColor=white"/>
+<img alt="Axios" src="https://img.shields.io/badge/axios%20-%235A29E4.svg?&style=for-the-badge&logo=axios&logoColor=white"/>
+<img alt="AntDesign" src="https://img.shields.io/badge/antdesign%20-%230170FE.svg?&style=for-the-badge&logo=antdesign&logoColor=white"/>
 </p>
 
 ### Iniciando o projeto
