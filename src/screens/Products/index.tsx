@@ -45,7 +45,7 @@ export function Products() {
   }
 
   return(
-    <Container>
+    <Container testID='screenProducts'>
       <Header 
         showCartIcon={true}
         title='Produtos'
