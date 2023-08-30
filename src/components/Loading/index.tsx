@@ -2,7 +2,7 @@ import { Container, LoadingIndicator } from "./styles";
 
 export function Loading() {
   return (
-    <Container>
+    <Container testID="loading">
       <LoadingIndicator />
     </Container>
   )
