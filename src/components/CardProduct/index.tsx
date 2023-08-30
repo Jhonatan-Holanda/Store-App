@@ -1,21 +1,36 @@
-import { HighLight } from '../HighLight';
-import { Container, ContainerInfoProduct, ContainerValue, Icon, Image, Value, ViewImageCenter } from './styles';
-import { QuantityCount } from '../QuantityCount';
-import { ProductProps } from '../../@types/productsDTO';
+import { useTheme } from 'styled-components/native';
 import { TouchableOpacityProps } from 'react-native';
+
+import { HighLight } from '../HighLight';
+import { ProductProps } from '../../@types/productsDTO';
+import { IconComponent } from '../IconComponent';
+
+import { 
+  Container,
+  ContainerInfoProduct, 
+  ContainerRemoveProduct, 
+  ViewImageCenter, 
+  ContainerValue,
+  ContainerText,
+  SubTitle, 
+  Title,
+  Image, 
+  Value 
+} from './styles';
 
 type Props = ProductProps & TouchableOpacityProps & {
   fill?: boolean;
+  quantity?: number;
+  onRemoveProductInCart?: (id:string) => void;
 }
 
-export function CardProduct({description, image, price, title, fill, ...rest}: Props){
+export function CardProduct({description, image, price, title, fill, quantity, id, onRemoveProductInCart, ...rest}: Props){
+  const theme = useTheme();
   return (
     <Container
       fill={fill}
       {...rest}
     >
-      {!fill && <Icon name='hearto'/>}
-
       <ViewImageCenter 
         fill={fill}
       >
@@ -34,14 +49,20 @@ export function CardProduct({description, image, price, title, fill, ...rest}: P
       </ContainerInfoProduct>
 
       <ContainerValue>
+        {fill && 
+          <ContainerRemoveProduct onPress={() => onRemoveProductInCart(id)}>
+            <IconComponent iconName='close' size={24} color={theme.COLORS.RED_DARK}/>
+          </ContainerRemoveProduct>
+        }
         <Value>
           {`R$ ` + price}
         </Value>
 
         {fill && 
-          <QuantityCount 
-            sizeIcon={32}
-          />
+          <ContainerText>
+            <Title>Quantidade: </Title>
+            <SubTitle>{quantity}</SubTitle>
+          </ContainerText>
         }
       </ContainerValue>
     </Container>
