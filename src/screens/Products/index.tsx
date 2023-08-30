@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native'
+import { Alert, FlatList } from 'react-native'
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,6 +10,7 @@ import { getAllProducts } from '../../services/products';
 import { ProductProps } from '../../@types/productsDTO';
 
 import { Container } from './styles'
+import { AppError } from '../../utils/AppError';
 
 export function Products() {
   const [products, setProducts] = useState<ProductProps[]>([]);
@@ -18,14 +19,22 @@ export function Products() {
   const navigation = useNavigation();
 
   async function fetchAllProducts() {
-    
-    setLoading(true);
-    
-    const products = await getAllProducts();
-    setProducts(products);
-    setLoading(false);
-  }
+    try {
+      setLoading(true);
+      const products = await getAllProducts();
+      setProducts(products);
+    } catch (error) {
+      const isAppError = error instanceof AppError;
 
+      if(isAppError) {
+        Alert.alert(error.message)
+      }else{
+        Alert.alert("Não foi possível carregar os produtos, tente novamente mais tarde.")
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     fetchAllProducts();
