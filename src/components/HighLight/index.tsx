@@ -10,10 +10,10 @@ type HighLightProps = {
 export function HighLight({title , description, short, detail = false}: HighLightProps) {
   return (
     <Container>
-      <Title detail={detail}>
+      <Title testID='titleHighLight' detail={detail}>
         {short ? title.substring(0,22) + '...' : title}
       </Title>
-      <Description detail={detail}>
+      <Description testID='descriptionHighLight' detail={detail}>
         {short ? description.substring(0, 50).toLowerCase() + `...` : description}
       </Description>
     </Container>
