@@ -2,27 +2,10 @@ import {  render, screen } from '@testing-library/react-native';
 import { CardProduct } from "."
 import { ThemeProvider } from 'styled-components/native';
 import _default from '../../theme/default';
+import { mockProductsCardProducts } from '../../../__tests__/mocks/component/mockProductsCardProducts';
 
 describe("Component: CardProduct", () => {
-  const data = 
-  [
-    {
-      id: '20',
-      title: 'DANVOUY Womens T Shirt Casual Cotton Short',
-      price: 12.99,
-      description: '95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.',
-      image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
-    },
-    {
-      id: '18',
-      title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
-      price: 9.85,
-      description: '95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem',
-      category: "women's clothing",
-      image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
-      rating: { rate: 4.7, count: 130 }
-    },
-  ]
+  const data = mockProductsCardProducts;
   it("should display the card product without the remove icon, is fill prop is false", () => {
     
     render(
