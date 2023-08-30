@@ -1,77 +1,68 @@
-import { Alert, FlatList } from 'react-native'
-import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import { Alert, FlatList } from 'react-native';
 
-import { CardProduct } from '../../components/CardProduct'
-import { Header } from '../../components/Header'
-import { Loading } from '../../components/Loading';
+import { CardProduct, Header, Loading } from '../../components';
+import { AppError, Product } from '../../models';
+import { getProducts } from '../../services/';
 
-import { getAllProducts } from '../../services/products';
-import { ProductProps } from '../../@types/productsDTO';
-
-import { Container } from './styles'
-import { AppError } from '../../utils/AppError';
+import { Container } from './styles';
 
 export function Products() {
-  const [products, setProducts] = useState<ProductProps[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const navigation = useNavigation();
 
-  async function fetchAllProducts() {
+  async function fetchProducts() {
     try {
-      setLoading(true);
-      const products = await getAllProducts();
+      const products = await getProducts();
       setProducts(products);
     } catch (error) {
       const isAppError = error instanceof AppError;
 
-      if(isAppError) {
-        Alert.alert(error.message)
-      }else{
-        Alert.alert("Não foi possível carregar os produtos, tente novamente mais tarde.")
-      }
+      Alert.alert(
+        isAppError
+          ? error.message
+          : 'Não foi possível carregar os produtos, tente novamente mais tarde.'
+      );
     } finally {
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    fetchAllProducts();
-  },[])
+    fetchProducts();
+  }, []);
 
   function handleOpenDetailProduct(id: string) {
-    navigation.navigate('detailProduct', { id })
+    navigation.navigate('productDetails', { id });
   }
 
-  return(
+  return (
     <Container>
-      <Header 
-        showCartIcon={true}
-        title='Produtos'
-      />
-      {loading || !products
-      ?
+      <Header title="Produtos" showCartIcon />
+      {loading ? (
         <Loading />
-      :
+      ) : (
         <FlatList
           numColumns={2}
-          columnWrapperStyle={{justifyContent:'center', gap: 10, marginBottom: 10}}
+          columnWrapperStyle={{
+            justifyContent: 'center',
+            gap: 10,
+            marginBottom: 10,
+          }}
           data={products}
-          keyExtractor={item => item.title}
-          renderItem={({item}) => (
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
             <CardProduct
-              description={item.description}
-              id={item.id}
-              image={item.image}
-              price={item.price}
-              title={item.title}
+              product={item}
               fill={false}
               onPressOut={() => handleOpenDetailProduct(item.id)}
             />
           )}
         />
-      }
+      )}
     </Container>
-  )
+  );
 }

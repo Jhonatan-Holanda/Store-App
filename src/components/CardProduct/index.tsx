@@ -1,70 +1,70 @@
-import { useTheme } from 'styled-components/native';
 import { TouchableOpacityProps } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
-import { HighLight } from '../HighLight';
-import { ProductProps } from '../../@types/productsDTO';
-import { IconComponent } from '../IconComponent';
+import { HighLight, Icon } from '..';
+import { CartProductWithDetails, Product } from '../../models';
 
-import { 
+import {
   Container,
-  ContainerInfoProduct, 
-  ContainerRemoveProduct, 
-  ViewImageCenter, 
-  ContainerValue,
+  ContainerInfoProduct,
+  ContainerRemoveProduct,
   ContainerText,
-  SubTitle, 
+  ContainerValue,
+  Image,
+  SubTitle,
   Title,
-  Image, 
-  Value 
+  Value,
+  ViewImageCenter,
 } from './styles';
 
-type Props = ProductProps & TouchableOpacityProps & {
+type Props = TouchableOpacityProps & {
+  product: Product | CartProductWithDetails;
   fill?: boolean;
-  quantity?: number;
-  onRemoveProductInCart?: (id:string) => void;
-}
+  quantity?: string;
+  onRemoveProductInCart?: (id: string) => void;
+};
 
-export function CardProduct({description, image, price, title, fill, quantity, id, onRemoveProductInCart  = () => {}, ...rest}: Props){
+export function CardProduct({
+  product,
+  fill,
+  quantity,
+  onRemoveProductInCart = () => {},
+  ...rest
+}: Props) {
   const theme = useTheme();
+
   return (
-    <Container
-      fill={fill}
-      {...rest}
-    >
-      <ViewImageCenter 
-        fill={fill}
-      >
-        <Image source={{uri: image}} resizeMode='contain'/>
+    <Container fill={fill} {...rest}>
+      <ViewImageCenter fill={fill}>
+        <Image source={{ uri: product.image }} resizeMode="contain" />
       </ViewImageCenter>
-      
-      <ContainerInfoProduct
-        fill={fill}
-      >
+
+      <ContainerInfoProduct fill={fill}>
         <HighLight
-          title={title}
-          description={description}
-          short={true}
-          detail={false}
+          title={product.title}
+          description={product.description}
+          short
         />
       </ContainerInfoProduct>
 
       <ContainerValue>
-        {fill && 
-          <ContainerRemoveProduct onPress={() => onRemoveProductInCart(id)}>
-            <IconComponent iconName='close' size={24} color={theme.COLORS.RED_DARK}/>
+        {fill && (
+          <ContainerRemoveProduct
+            onPress={() => onRemoveProductInCart(product.id)}
+          >
+            <Icon iconName="close" size={24} color={theme.COLORS.RED_DARK} />
           </ContainerRemoveProduct>
-        }
-        <Value>
-          {`R$ ` + price}
-        </Value>
+        )}
 
-        {fill && 
+        <Value>{`R$ ` + product.price}</Value>
+
+        {fill && (
           <ContainerText>
             <Title>Quantidade: </Title>
             <SubTitle>{quantity}</SubTitle>
           </ContainerText>
-        }
+        )}
       </ContainerValue>
     </Container>
-  )
+  );
 }

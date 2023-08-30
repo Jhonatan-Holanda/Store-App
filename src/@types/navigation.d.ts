@@ -1,11 +1,11 @@
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
+      cart: undefined;
       products: undefined;
-      detailProduct: {
-        id:string
+      productDetails: {
+        id: string;
       };
-      cart:undefined
     }
   }
 }

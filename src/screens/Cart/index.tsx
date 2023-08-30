@@ -1,47 +1,41 @@
-import { Alert, FlatList } from "react-native";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
+import { Alert, FlatList } from 'react-native';
 
-import { CardProduct } from "../../components/CardProduct";
-import { Header } from "../../components/Header";
+import { CardProduct, Header, Loading } from '../../components';
+import { AppError, CartProductWithDetails } from '../../models';
+import {
+  getCartProducts,
+  getProductById,
+  removeProductFromCart,
+} from '../../services';
 
-import { Container } from "./styles";
-import { Loading } from "../../components/Loading";
-import { cartGetALL } from "../../storage/Cart/getProductsCarts";
-import { ProductProps } from "../../@types/productsDTO";
-import { getProductByID } from "../../services/products";
-import { AppError } from "../../utils/AppError";
-import { productRemoveInCart } from "../../storage/Cart/productRemoveInCart";
+import { Container } from './styles';
 
-type PropProduct = ProductProps &  {
-  quantity: number
-};
+export function Cart() {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<CartProductWithDetails[]>([]);
 
-export function Cart(){
-  const [loading, setLoading] = useState (false);
-  const [products, setProducts] = useState<PropProduct[]>([]);
-
-  async function fetchCartGetALL() {
+  async function fetchCartProducts() {
     try {
-      setLoading(true);
-      const productsInCart = await cartGetALL();
+      const cartProducts = await getCartProducts();
 
-      const productsInCartWithDetail: PropProduct[] = [];
-      
-      for(const product of productsInCart){
-        const response = await getProductByID(product.productId);
+      const cartProductsWithDetails: CartProductWithDetails[] = [];
 
-        productsInCartWithDetail.push({...product, ...response });
-      };
+      for (const cartProduct of cartProducts) {
+        const product = await getProductById(cartProduct.id);
 
-      setProducts(productsInCartWithDetail)
+        cartProductsWithDetails.push({ ...cartProduct, ...product });
+      }
+
+      setProducts(cartProductsWithDetails);
     } catch (error) {
       const isAppError = error instanceof AppError;
 
-      if(isAppError) {
-        Alert.alert(error.message)
-      }else{
-        Alert.alert("Não foi possível carregar os dados do produto, tente novamente mais tarde.")
-      }
+      Alert.alert(
+        isAppError
+          ? error.message
+          : 'Não foi possível carregar os produtos, tente novamente mais tarde.'
+      );
     } finally {
       setLoading(false);
     }
@@ -49,47 +43,41 @@ export function Cart(){
 
   async function handleRemoveProduct(id: string) {
     try {
-      await productRemoveInCart(id);
-      fetchCartGetALL();
-    }catch (error) {
-      console.log(error);
-      Alert.alert("Remover produto", "Não foi possível remover o produto do carrinho, tente novamente mais tarde.")
+      await removeProductFromCart(id);
+      fetchCartProducts();
+    } catch (error) {
+      Alert.alert(
+        'Remover produto',
+        'Não foi possível remover o produto do carrinho, tente novamente mais tarde.'
+      );
     }
   }
 
-  useEffect(()=> {
-    fetchCartGetALL();
-  },[])
+  useEffect(() => {
+    fetchCartProducts();
+  }, []);
 
-
-  return(
+  return (
     <Container>
-      <Header
-        title='Carrinho'
-        showBackButton={true}
-      />
+      <Header title="Carrinho" showBackButton />
 
-      {loading 
-      ?
+      {loading ? (
         <Loading />
-      :
+      ) : (
         <FlatList
           data={products}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => (
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
             <CardProduct
-              title={item.title}
               id={item.id}
-              image={item.image}
-              description={item.description}
-              price={item.price}
-              fill={true}
+              product={item}
               quantity={item.quantity}
               onRemoveProductInCart={() => handleRemoveProduct(item.id)}
+              fill
             />
           )}
         />
-      }
+      )}
     </Container>
-  )
+  );
 }

@@ -1,30 +1,29 @@
-import { TouchableOpacity } from "react-native";
-import styled, { css } from "styled-components/native";
+import { TouchableOpacity } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
-width: 100%;
+  width: 100%;
 
-flex-direction: row;
-align-items: center;
-margin: 10px 0px 30px;
-`
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0px 30px;
+`;
+
 export const BackButton = styled.TouchableOpacity`
   flex: 1;
   right: 0;
 `;
 
-
 export const Title = styled.Text`
   flex: 2 100%;
   text-align: center;
 
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_400}
     font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.XL}px;
+    font-size: ${theme.FONT_SIZE.XL};
     font-weight: bold;
   `}
-`
+`;
 
-export const ContainerButton = styled(TouchableOpacity)`
-`
+export const ContainerButton = styled(TouchableOpacity)``;
